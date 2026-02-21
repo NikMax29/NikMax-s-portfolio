@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ახალი სტილი ფონისთვის */
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.2) blur(3px);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    max-width: 1200px;
+    z-index: 2; /* კონტენტი სურათის ზემოთ რომ იყოს */
+}
+
+.character-box {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.mc-skin {
+    width: 450px; 
+    height: 450px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid orange;
+    filter: drop-shadow(0 0 25px rgba(255, 165, 0, 0.5));
+    box-shadow: 0 0 40px rgba(255, 165, 0, 0.4);
+    transition: 0.4s ease;
+}
+
+.mc-skin:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 60px rgba(255, 165, 0, 0.6);
+}
+
+.content-box {
+    width: 50%;
+}
+
+.hi-text {
+    font-size: 32px;
+    margin-bottom: 10px;  
+    text-shadow: 0 0 100px rgb(255, 166, 0);
+}
+
+.main-title {
+    font-size: 55px;
+    margin-bottom: 25px;
+    color: orange;
+    text-shadow: 0 0 20px orange;
+}
+
+.cursor {
+    font-weight: bold;
+    color: orange;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.description {
+    font-size: 20px;
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    text-shadow: 1px 1px 5px rgb(255, 187, 0);
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 165, 0, 0.5);
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: orange;
+    color: black;
+    box-shadow: 0 0 30px orange;
+    transform: scale(1.15);
+}
+
+.music-player {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    height: 55px;
+    width: 55px;
+    background: rgb(255, 115, 0);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid #ff9100;
+    box-shadow: 0 0 20px rgb(255, 153, 0);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: 0.4s ease;
+    z-index: 1000;
+}
+
+.music-player:hover {
+    width: 220px;
+}
+
+#volume-slider {
+    width: 140px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.music-player:hover #volume-slider {
+    opacity: 1;
+}
+
+/* სლაიდერის ღილაკის (Thumb) სტილიზაცია Chrome/Safari-სთვის */
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: black;
+    margin-top: -4px; /* ცენტრში რომ იყოს ხაზზე */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* სლაიდერის ხაზის (Track) სტილიზაცია Chrome/Safari-სთვის */
+#volume-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+#volume-icon {
+    font-size: 22px;
+    color: #000;
+    cursor: pointer;
+}
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 18px;
+    background: rgba(255, 174, 0, 0.9);
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 50px rgb(255, 123, 0);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+#enter-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    transition: 0.7s ease;
+}
+
+#enter-screen h1 {
+    color: rgb(255, 145, 0);
+    font-size: 55px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 25px orange;
+}
